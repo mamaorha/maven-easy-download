@@ -93,7 +93,7 @@ public class EasyDownload extends AbstractMojo
 
 				RestClientResponse restClientResponse = EasyRestClient.execute(url, method, easyRestHeader, payloadBytes);
 
-				if (restClientResponse.getHttpStatus() >= 300)
+				if (restClientResponse.getHttpStatus() < 200 || restClientResponse.getHttpStatus() >= 300)
 				{
 					throw new MojoExecutionException("download failed, http status: " + restClientResponse.getHttpStatus());
 				}
