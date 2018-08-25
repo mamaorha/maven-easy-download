@@ -98,7 +98,7 @@ public class EasyDownload extends AbstractMojo
 					throw new MojoExecutionException("download failed, http status: " + restClientResponse.getHttpStatus());
 				}
 
-				Files.write(file.toPath(), restClientResponse.getResponse());
+				Files.write(file.toPath(), restClientResponse.getResponseBody().getAllBytes());
 
 				getLog().info(String.format("download complete successfuly - [%s]", file.getPath()));
 			}
